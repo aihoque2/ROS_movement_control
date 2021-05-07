@@ -15,7 +15,7 @@ void doCircle(const nav_msgs::Odometry::ConstPtr& msg){
 }
 
 int main(int argc, char** argv){
-    ros::init(argc, argv, "circler");
+    ros::init(argc, argv, "circler_node");
     ros::NodeHandle n;
     ros::Publisher velocityPub = n.advertise<geometry_msgs::Twist>("/cmd_vel/", 1); //create our publisher node
     geometry_msgs::Twist base_cmd;
