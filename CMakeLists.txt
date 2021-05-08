@@ -107,9 +107,11 @@ catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES move_turtlebot
   CATKIN_DEPENDS 
-    geometry_msgs 
+    geometry_msgs
+    move_base_msgs 
     roscpp 
     rospy
+    actionlib
 #  DEPENDS system_lib
 )
 
