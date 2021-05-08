@@ -26,11 +26,26 @@ int main(int argc, char**argv){
     goal.target_pose.header.frame_id = "map";
     goal.target_pose.header.stamp = ros::Time::now();
 
-    /*TODO
-    float goals
-    goal.target_pose.pose.position.x = goals[i][0];
-    goal.target_pose.pose.position.y = goals[]
-    */
+    
+    float goals[2][3] = {{-2.0, 0.0, 1.57}, {0.0, 0.0, 1.57}}
+    for (int i = 0; i < 2; i++){
+        goal.target_pose.pose.position.x = goals[i][0];
+        goal.target_pose.pose.position.y = goals[i][1];
+        goal.target_pose.pose.position.w = goals[i][2];
+
+        //send the goal position and orientation (w) for robot to reach
+        ROS_INFO("Sending Goal");
+        ac.sendGoal(goal);
+
+        //wait infinite time for results
+        ac.waitForResult();
+
+        ros::Duration(5.0).sleep();
+    }
+
+    if (ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED) ROS_INFO("We have reached our destination!");
+    
+    else ROS_INFO("The base failed to move forward");
 
     return 0;
 }
