@@ -142,6 +142,7 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(circler_node src/circler.cpp)
+add_executable(tutorial src/move_turtlebot.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -149,10 +150,13 @@ add_executable(circler_node src/circler.cpp)
 ## e.g. "rosrun someones_pkg node" instead of "rosrun someones_pkg someones_pkg_node"
 # set_target_properties(${PROJECT_NAME}_node PROPERTIES OUTPUT_NAME node PREFIX "")
 
+
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 #add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(circler_node make_circle_cpp)
+add_dependencies(tutorial move_turtlebot_cpp)
+
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(${PROJECT_NAME}_node
@@ -160,6 +164,10 @@ add_dependencies(circler_node make_circle_cpp)
 # )
 
  target_link_libraries(circler_node
+   ${catkin_LIBRARIES}
+ )
+
+ target_link_libraries(tutorial
    ${catkin_LIBRARIES}
  )
 
