@@ -131,6 +131,7 @@ include_directories(
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/move_turtlebot.cpp
+#   src/${PROJECT_NAME}/circler.cpp
 # )
 
 ## Add cmake target dependencies of the library

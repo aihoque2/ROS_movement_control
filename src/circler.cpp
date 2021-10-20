@@ -16,25 +16,28 @@ void velCallback(const geometry_msgs::Twist::ConstPtr& msg){
     if (vel.linear.x > 1.8){
         vel.linear.x = 1.8;
     }
-
     velocityPub.publish(vel);
 }
 */
 
 int main(int argc, char** argv){
-    ros::init(argc, argv, "circler_node");
+    ros::init(argc, argv, "circler_node"); //announce that circler node is gonna publish
     ros::NodeHandle n;
     ros::Publisher velocityPub;
-    ros::Rate loop_rate(20);
+    ros::Rate loop_rate(2);
 
     //we advertise to tell the master to publicze this node publishing messages to the topic
     velocityPub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 10); //create our publisher node
     
     geometry_msgs::Twist msg;
-    msg.linear.x = 12.0;
-    velocityPub.publish(msg);
-    ros::spin();
-    loop_rate.sleep();
-    return 0;
+    
+    while (ros::ok())
+    {
+        msg.linear.x = 12;
+        velocityPub.publish(msg);
+        ros::spinOnce();
+        loop_rate.sleep();
+    }
 
+    return 0;
 }

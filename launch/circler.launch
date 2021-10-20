@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <launch>
-    <node pkg="move_turtlebot" name="circler_node" type="circler.py" output="screen" />
+    <node pkg="move_turtlebot" name="circler_node" type="circler_node" output="screen" />
 </launch>
