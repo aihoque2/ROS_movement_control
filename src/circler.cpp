@@ -8,8 +8,7 @@ a turtlebot go in circles
 #include "nav_msgs/Odometry.h"
 #include "geometry_msgs/Twist.h"
 
-ros::Publisher velocityPub;
-
+/*
 void velCallback(const geometry_msgs::Twist::ConstPtr& msg){
     
     geometry_msgs::Twist vel = *msg;
@@ -20,13 +19,22 @@ void velCallback(const geometry_msgs::Twist::ConstPtr& msg){
 
     velocityPub.publish(vel);
 }
+*/
 
 int main(int argc, char** argv){
     ros::init(argc, argv, "circler_node");
     ros::NodeHandle n;
+    ros::Publisher velocityPub;
+    ros::Rate loop_rate(20);
+
+    //we advertise to tell the master to publicze this node publishing messages to the topic
     velocityPub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 10); //create our publisher node
-    ros::Subscriber sub = n.subscribe("/cmd_vel", 10, velCallback);
+    
+    geometry_msgs::Twist msg;
+    msg.linear.x = 12.0;
+    velocityPub.publish(msg);
     ros::spin();
+    loop_rate.sleep();
     return 0;
 
 }

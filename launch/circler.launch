@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="move_turtlebot" name="circler_node" type="circler.py" output="screen" />
+</launch>
