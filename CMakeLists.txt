@@ -130,7 +130,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/move_turtlebot.cpp
+#   src/${PROJECT_NAME}/move_to_goal.cpp
 #   src/${PROJECT_NAME}/circler.cpp
 # )
 
@@ -143,7 +143,7 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(circler_node src/circler.cpp)
-add_executable(tutorial src/move_turtlebot.cpp)
+add_executable(tutorial src/move_to_goal.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -156,7 +156,7 @@ add_executable(tutorial src/move_turtlebot.cpp)
 ## same as for the library above
 #add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(circler_node make_circle_cpp)
-add_dependencies(tutorial move_turtlebot_cpp)
+add_dependencies(tutorial move_to_goal_cpp)
 
 
 ## Specify libraries to link a library or executable target against
@@ -219,7 +219,7 @@ add_dependencies(tutorial move_turtlebot_cpp)
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_move_turtlebot.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_move_to_goal.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
