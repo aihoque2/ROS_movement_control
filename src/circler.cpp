@@ -26,13 +26,13 @@ int main(int argc, char** argv){
     ros::Publisher velocityPub;
     ros::Rate loop_rate(2);
 
-    //we advertise to tell the master to publicze this node publishing messages to the topic
+    //we advertise to tell the master to publicize this node publishing Twist messages to the topic
     velocityPub = n.advertise<geometry_msgs::Twist>("/cmd_vel", 10); //create our publisher node
     
     geometry_msgs::Twist msg;
     int i =0;
 
-    /*
+    
     //this is the use case when we want the turtlebot to move a bit
 
     while (ros::ok())
@@ -43,24 +43,15 @@ int main(int argc, char** argv){
         loop_rate.sleep();
         if (i>3){
             msg.linear.x = 0;
+            msg.angular.x = 5;
             velocityPub.publish(msg);
-            ros::spinOnce()
+            ros::spinOnce();
             break;
         }
         
         i++;
     }
     
-    */
-   
-    
-    while (ros::ok())
-    {
-        msg.linear.x = 12;
-        velocityPub.publish(msg);
-        ros::spinOnce();
-        loop_rate.sleep();
-    }
     
 
     return 0;
