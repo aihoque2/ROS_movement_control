@@ -1,27 +1,13 @@
-/*
-this is the code developed in order to
-make a publisher node that makes
-a turtlebot go in circles 
-*/
-
 #include "ros/ros.h"
 #include "nav_msgs/Odometry.h"
 #include "geometry_msgs/Twist.h"
 
 /*
-void velCallback(const geometry_msgs::Twist::ConstPtr& msg){
-    
-    geometry_msgs::Twist vel = *msg;
-    
-    if (vel.linear.x > 1.8){
-        vel.linear.x = 1.8;
-    }
-    velocityPub.publish(vel);
-}
+make the robot go linear
 */
 
 int main(int argc, char** argv){
-    ros::init(argc, argv, "circler_node"); //announce that circler node is gonna publish
+    ros::init(argc, argv, "straight_node"); //announce that straight node is gonna publish
     ros::NodeHandle n;
     ros::Publisher velocityPub;
     ros::Rate loop_rate(2);
@@ -41,16 +27,8 @@ int main(int argc, char** argv){
         velocityPub.publish(msg);
         ros::spinOnce();
         loop_rate.sleep();
-        if (i>3){
-            msg.linear.x = 0;
-            msg.angular.x = 5;
-            velocityPub.publish(msg);
-            ros::spinOnce();
-        }
         
-        i++;
     }
-    
     
 
     return 0;

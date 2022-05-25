@@ -7,5 +7,9 @@
         "*.world": "xml",
         "unordered_map": "cpp",
         "unordered_set": "cpp"
-    }
+    },
+    "python.analysis.extraPaths": [
+        "/home/ahoque245/catkin_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages"
+    ]
 }
